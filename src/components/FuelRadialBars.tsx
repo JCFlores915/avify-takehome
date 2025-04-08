@@ -1,7 +1,7 @@
 import React from "react";
-import Chart from "react-apexcharts";
 import { GenerationMixItem } from "../interfaces";
-import { Card } from "antd";
+import Card from 'antd/es/card/Card';
+import Chart from "react-apexcharts";
 
 interface Props {
   data: GenerationMixItem[];

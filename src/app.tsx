@@ -5,7 +5,6 @@ import EnergyIconList from "./components/EnergyIconList";
 import FuelRadialBars from "./components/FuelRadialBars";
 import Loader from "./components/Loader";
 import { Typography, Button } from "antd";
-
 const { Title } = Typography;
 
 const App = () => {
@@ -32,8 +31,7 @@ const App = () => {
     "0": <FuelRadialBars data={data} />,
     "1": <EnergyDonutChart data={data} />,
     "2": <EnergyIconList data={data} />,
-  }
-
+  };
 
   return (
     <div
@@ -58,15 +56,13 @@ const App = () => {
               key={option.value}
               type={showOptions === option.value ? "primary" : "default"}
               onClick={() => setShowOptions(option.value)}
-              style={{ margin: "0 8px" }}
+              style={{ margin: "8px 8px" }}
             >
               {option.label}
             </Button>
           ))}
         </div>
       )}
-      
-
     </div>
   );
 };

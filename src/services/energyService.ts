@@ -7,7 +7,6 @@ export const fetchGenerationMix = async (): Promise<GenerationMixItem[]> => {
     const response = await axios.get(config.API_URL);
     return response.data.data.generationmix;
   } catch (error) {
-    console.error("Error fetching generation mix:", error);
     throw error;
   }
 };
