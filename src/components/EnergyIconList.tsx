@@ -13,8 +13,8 @@ const iconMap: { [key: string]: React.ReactNode } = {
   wind: <CloudOutlined style={{ color: "#00bcd4", fontSize: 24 }} />,
   solar: <BuildOutlined style={{ color: "#ff9800", fontSize: 24 }} />,
   nuclear: <AlertOutlined style={{ color: "#f44336", fontSize: 24 }} />,
-  biomass: "",
-  gas: "",
+  biomass: <FireOutlined style={{ color: "#4caf50", fontSize: 24 }} />,
+  gas: <FireOutlined style={{ color: "#ff5722", fontSize: 24 }} />,
   coal: <FireOutlined style={{ color: "#795548", fontSize: 24 }} />,
   default: <ThunderboltOutlined style={{ color: "#9e9e9e", fontSize: 24 }} />,
 };
