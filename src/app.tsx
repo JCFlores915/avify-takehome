@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { fetchGenerationMix } from "./services/energyService";
 import EnergyDonutChart from "./components/EnergyDonutChart";
 import EnergyIconList from "./components/EnergyIconList";
+import Loader from "./components/Loader";
+import { Typography, Button } from "antd";
+
+const { Title } = Typography;
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -24,10 +28,15 @@ const App = () => {
         padding: 24,
       }}
     >
-      <h1>Energy Generation Mix</h1>
-      {loading ? <p>Loading...</p> : <EnergyDonutChart data={data} />}
+      <Title level={2} style={{ textAlign: "center" }}>
+        Energy Generation Mix
+      </Title>
+
+      {loading && <Loader />}
+
+      <EnergyDonutChart data={data} />
       <h2>Energy Sources</h2>
-      {loading ? <p>Loading...</p> : <EnergyIconList data={data} />}
+      <EnergyIconList data={data} />
     </div>
   );
 };
