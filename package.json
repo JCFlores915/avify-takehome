@@ -5,7 +5,11 @@
     "start": "webpack-dev-server --hot --progress"
   },
   "dependencies": {
+    "antd": "^5.24.6",
+    "apexcharts": "^4.5.0",
+    "axios": "^1.8.4",
     "react": "^18.1.0",
+    "react-apexcharts": "^1.7.0",
     "react-dom": "^18.1.0"
   },
   "devDependencies": {
