@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchGenerationMix } from "./services/energyService";
 import EnergyDonutChart from "./components/EnergyDonutChart";
 import EnergyIconList from "./components/EnergyIconList";
+import FuelRadialBars from "./components/FuelRadialBars";
 import Loader from "./components/Loader";
 import { Typography, Button } from "antd";
 
@@ -22,9 +23,17 @@ const App = () => {
   }, []);
 
   const options = [
-    { label: "Mostrar modo grafico", value: "0" },
-    { label: "Mostrar modo lista", value: "1" },
+    { label: "Mostrar modo dashboard", value: "0" },
+    { label: "Mostrar modo grafico", value: "1" },
+    { label: "Mostrar modo lista", value: "2" },
   ];
+
+  const renderContent: { [key: string]: React.ReactNode } = {
+    "0": <FuelRadialBars data={data} />,
+    "1": <EnergyDonutChart data={data} />,
+    "2": <EnergyIconList data={data} />,
+  }
+
 
   return (
     <div
@@ -40,11 +49,7 @@ const App = () => {
 
       {loading && <Loader />}
 
-      {showOptions === "0" ? (
-        <EnergyDonutChart data={data} />
-      ) : (
-        <EnergyIconList data={data} />
-      )}
+      {renderContent[showOptions]}
 
       {!loading && (
         <div style={{ textAlign: "center", marginTop: 24 }}>
@@ -60,6 +65,8 @@ const App = () => {
           ))}
         </div>
       )}
+      
+
     </div>
   );
 };
