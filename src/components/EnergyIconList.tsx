@@ -44,6 +44,7 @@ const EnergyIconList = ({ data }: Props) => {
             <Progress
               percent={item.perc}
               strokeColor="#4caf50"
+                status="active"
             />
           </div>
         </div>
