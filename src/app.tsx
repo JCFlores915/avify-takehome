@@ -10,6 +10,7 @@ const { Title } = Typography;
 const App = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showOptions, setShowOptions] = useState("0");
 
   useEffect(() => {
     fetchGenerationMix()
@@ -20,6 +21,11 @@ const App = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  const options = [
+    { label: "Mostrar modo grafico", value: "0" },
+    { label: "Mostrar modo lista", value: "1" },
+  ];
+
   return (
     <div
       style={{
@@ -29,14 +35,31 @@ const App = () => {
       }}
     >
       <Title level={2} style={{ textAlign: "center" }}>
-        Energy Generation Mix
+        UK Energy Generation Mix
       </Title>
 
       {loading && <Loader />}
 
-      <EnergyDonutChart data={data} />
-      <h2>Energy Sources</h2>
-      <EnergyIconList data={data} />
+      {showOptions === "0" ? (
+        <EnergyDonutChart data={data} />
+      ) : (
+        <EnergyIconList data={data} />
+      )}
+
+      {!loading && (
+        <div style={{ textAlign: "center", marginTop: 24 }}>
+          {options.map((option) => (
+            <Button
+              key={option.value}
+              type={showOptions === option.value ? "primary" : "default"}
+              onClick={() => setShowOptions(option.value)}
+              style={{ margin: "0 8px" }}
+            >
+              {option.label}
+            </Button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

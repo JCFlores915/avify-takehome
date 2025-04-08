@@ -7,6 +7,7 @@ import {
   BuildOutlined,
   AlertOutlined,
 } from "@ant-design/icons";
+import { Progress } from "antd";
 
 const iconMap: { [key: string]: React.ReactNode } = {
   wind: <CloudOutlined style={{ color: "#00bcd4", fontSize: 24 }} />,
@@ -40,16 +41,10 @@ const EnergyIconList = ({ data }: Props) => {
           {iconMap[item.fuel] || iconMap["default"]}
           <div style={{ flex: 1 }}>
             <div style={{ fontWeight: 500 }}>{item.fuel.toUpperCase()}</div>
-            <div
-              style={{
-                height: 10,
-                width: `${item.perc}%`,
-                backgroundColor: "#4caf50",
-                borderRadius: 4,
-                marginTop: 4,
-              }}
-            ></div>
-            <div style={{ fontWeight: 600 }}>{item.perc}%</div>
+            <Progress
+              percent={item.perc}
+              strokeColor="#4caf50"
+            />
           </div>
         </div>
       ))}

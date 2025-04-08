@@ -9,7 +9,7 @@ const EnergyDonutChart = ({ data }: Props) => {
     console.log(data, "data from donut chart");
   const options = {
     chart: { type: "donut" },
-    labels: data.map((item) => item.fuel),
+    labels: data.map((item) => item.fuel.charAt(0).toUpperCase() + item.fuel.slice(1)),
     legend: { position: "bottom" },
     responsive: [
       {
